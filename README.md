@@ -7,7 +7,7 @@ build之后的静态文件上传到阿里云OSS
 2、安装完成后，在项目根目录创建`config-overrides.js`
 ## config-overrides.js  代码内容
 ```
-const UploadStrictAliOss = require('uploadStrictAliOss')  // 文件所在路径
+const UploadStrictAliOss = require('./deploy/plugins/uploadStrictAliOss')  // 文件所在路径
 
 const { override, addWebpackPlugin, addBabelPlugins } = require('customize-cra');
  module.exports = override(
@@ -17,4 +17,6 @@ const { override, addWebpackPlugin, addBabelPlugins } = require('customize-cra')
     process.env.NODE_ENV === 'development' ? null : addBabelPlugins(['transform-remove-console'])
 );
 ```
+## 注意事项
+1、 在OSS后台管理，必填创建一个分支，只放于`static`文件
 
